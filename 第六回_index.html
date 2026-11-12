@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="emerald">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自己紹介 - なかちゃん</title>
+    <!-- Tailwind CSS v4 & daisyUI v5 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+</head>
+<body class="bg-base-200 min-h-screen flex flex-col justify-between items-center">
+
+    <!-- 上部 ナビバー (Navbar) -->
+    <header class="w-full navbar bg-primary text-primary-content px-6 shadow-md">
+        <div class="flex-1">
+            <span class="text-xl font-bold tracking-wide">✨ Profile Page</span>
+        </div>
+        <div class="flex-none">
+            <span class="badge badge-outline text-primary-content">授業練習用</span>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="w-full max-w-lg p-4 my-6 flex-grow">
+        <div class="card bg-base-100 shadow-2xl border border-base-300 overflow-hidden">
+            <div class="card-body p-6 gap-6">
+
+                <!-- ヒーロー (Hero) -->
+                <div class="hero bg-base-200 rounded-2xl p-6 border border-base-300">
+                    <div class="hero-content text-center flex-col">
+                        <div class="avatar placeholder">
+                            <div class="bg-primary text-primary-content rounded-full w-20 ring ring-primary ring-offset-base-100 ring-offset-2">
+                                <span class="text-4xl">🎭</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="text-4xl font-extrabold text-primary">なかちゃん</h1>
+                            <p class="text-xs text-base-content/70 mt-1">My Self Introduction</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1. ひとこと -->
+                <div class="chat chat-start">
+                    <div class="chat-header text-xs text-base-content/60 mb-1">💬 ひとこと</div>
+                    <div class="chat-bubble chat-bubble-primary text-lg font-bold">
+                        よろしくです！
+                    </div>
+                </div>
+
+                <div class="divider my-0"></div>
+
+                <!-- 2. 好きなもの（演劇、ラーメン、ねこ） -->
+                <div>
+                    <h2 class="text-sm font-bold text-base-content/70 mb-3 flex items-center gap-1">
+                        <span>❤️</span> 好きなもの
+                    </h2>
+                    <div class="flex flex-wrap gap-2">
+                    <button class="btn btn-primary btn-sm rounded-full">🎭 演劇</button>
+                    <button class="btn btn-secondary btn-sm rounded-full">🍜 ラーメン</button>
+                    <button class="btn btn-accent btn-sm rounded-full">🐱 ねこ</button>
+                    </div>
+                </div>
+
+                <div class="divider my-0"></div>
+
+                <!-- 3. 最近学んでいること -->
+                <div class="stats shadow bg-base-200 border border-base-300">
+                    <div class="stat">
+                        <div class="stat-title text-xs font-bold text-base-content/70">📖 最近学んでいること</div>
+                        <div class="stat-value text-2xl text-secondary mt-1">身体表現</div>
+                    </div>
+                </div>
+
+                <div class="divider my-0"></div>
+
+                <!-- 4. この授業で作ったもの -->
+                <div class="bg-base-200 p-4 rounded-xl border border-base-300">
+                    <h2 class="text-xs font-bold text-base-content/70 mb-2">🚀 この授業で作ったもの</h2>
+                    <div class="card bg-base-100 border border-base-300 shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="card-title text-base font-bold text-primary">Vibe Codingで作成したWebサイト</h3>
+                            <p class="text-xs text-base-content/70">AIとの対話を通して素早く組み上げた、自己紹介ポートフォリオページです。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- 下部 フッター (Footer) -->
+    <footer class="w-full footer footer-center p-4 bg-neutral text-neutral-content">
+        <aside>
+            <p>© なかちゃん 2026</p>
+        </aside>
+    </footer>
+
+</body>
+</html>

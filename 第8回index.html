@@ -86,28 +86,100 @@
                     </div>
                 </div>
 
-                <!-- 5. ジャグラー風ミニスロット -->
+                <!-- 5. ジャグラー風ミニスロット（本格版） -->
                 <div class="divider my-0"></div> <!-- 区切り線を表示する -->
-                <div class="bg-neutral text-neutral-content p-3 sm:p-4 rounded-2xl border-2 border-warning shadow-lg flex flex-col gap-3"> <!-- スロット筐体風の枠 -->
-                    <div class="flex items-center justify-between gap-2"> <!-- 上部のタイトルとランプを横並びにする枠 -->
+                <div class="bg-neutral text-neutral-content p-3 sm:p-4 rounded-2xl border-2 border-warning shadow-xl flex flex-col gap-3"> <!-- スロット筐体風の枠 -->
+                    <!-- 上部ヘッダー：タイトルとGOGO!ランプ -->
+                    <div class="flex items-center justify-between gap-2"> <!-- タイトルとランプを横並びにする枠 -->
                         <h2 class="text-base font-extrabold text-warning">🤡 なかちゃんジャグラー</h2> <!-- スロットの見出し -->
-                        <div id="gogo-lamp" class="px-3 py-1 rounded-lg bg-black/50 text-white/20 text-sm font-black tracking-wider border border-white/10">GOGO! CHANCE</div> <!-- 当たるとペカッと光るGOGOランプ -->
-                    </div> <!-- 上部の横並び枠を閉じる -->
-                    <div class="grid grid-cols-3 gap-2 bg-base-100 p-2 sm:p-3 rounded-xl text-center"> <!-- 3つのリールを横並びにする枠 -->
-                        <div id="reel-0" class="text-5xl py-3 bg-base-200 rounded-lg border border-base-300">7️⃣</div> <!-- 左リールの表示エリア -->
-                        <div id="reel-1" class="text-5xl py-3 bg-base-200 rounded-lg border border-base-300">7️⃣</div> <!-- 中リールの表示エリア -->
-                        <div id="reel-2" class="text-5xl py-3 bg-base-200 rounded-lg border border-base-300">7️⃣</div> <!-- 右リールの表示エリア -->
-                    </div> <!-- 3つのリールの枠を閉じる -->
-                    <div class="grid grid-cols-3 gap-2"> <!-- 3つのストップボタンを横並びにする枠 -->
-                        <button id="stop-0" type="button" class="btn btn-error btn-md text-base font-bold" disabled>STOP</button> <!-- 左リールを止めるボタン -->
-                        <button id="stop-1" type="button" class="btn btn-error btn-md text-base font-bold" disabled>STOP</button> <!-- 中リールを止めるボタン -->
-                        <button id="stop-2" type="button" class="btn btn-error btn-md text-base font-bold" disabled>STOP</button> <!-- 右リールを止めるボタン -->
-                    </div> <!-- ストップボタンの枠を閉じる -->
-                    <button id="spin-btn" type="button" class="btn btn-warning btn-lg w-full text-lg font-extrabold">🎰 スロットを回す！</button> <!-- レバーON（回転開始）ボタン -->
-                    <div class="flex items-center justify-between gap-2 text-sm px-1"> <!-- メッセージとBIG回数を横並びにする枠 -->
-                        <p id="slot-msg" class="font-bold text-warning">ボタンを押してスタート！</p> <!-- スロットの結果メッセージ -->
-                        <span id="bonus-count" class="badge badge-secondary badge-lg font-bold shrink-0">BIG: 0回</span> <!-- 大当たり回数の表示 -->
-                    </div> <!-- メッセージとBIG回数の枠を閉じる -->
+                        <div id="gogo-lamp" class="px-3 py-1 rounded-lg bg-black/60 text-white/20 text-sm font-black tracking-wider border border-white/10">GOGO! CHANCE</div> <!-- 当たると光るGOGOランプ -->
+                    </div> <!-- 上部ヘッダーを閉じる -->
+
+                    <!-- ステータスバー：コイン・払出・BIG/REG回数 -->
+                    <div class="grid grid-cols-4 gap-1.5 text-center bg-black/40 p-2 rounded-xl border border-white/10"> <!-- 4つの数値表示を横並びにする枠 -->
+                        <div class="bg-neutral/80 rounded-lg py-1.5 px-1"> <!-- コイン枚数の枠 -->
+                            <div class="text-[11px] text-white/60 font-bold">COIN</div> <!-- コインのラベル -->
+                            <div id="coin-display" class="text-base font-black text-warning">100</div> <!-- 現在の所持コイン数 -->
+                        </div> <!-- コイン枚数の枠を閉じる -->
+                        <div class="bg-neutral/80 rounded-lg py-1.5 px-1"> <!-- 払出枚数の枠 -->
+                            <div class="text-[11px] text-white/60 font-bold">PAY</div> <!-- 払出のラベル -->
+                            <div id="pay-display" class="text-base font-black text-success">0</div> <!-- 直近の払出枚数 -->
+                        </div> <!-- 払出枚数の枠を閉じる -->
+                        <div class="bg-neutral/80 rounded-lg py-1.5 px-1"> <!-- BIG回数の枠 -->
+                            <div class="text-[11px] text-white/60 font-bold">BIG</div> <!-- BIGのラベル -->
+                            <div id="big-count" class="text-base font-black text-error">0</div> <!-- BIGボーナス合計回数 -->
+                        </div> <!-- BIG回数の枠を閉じる -->
+                        <div class="bg-neutral/80 rounded-lg py-1.5 px-1"> <!-- REG回数の枠 -->
+                            <div class="text-[11px] text-white/60 font-bold">REG</div> <!-- REGのラベル -->
+                            <div id="reg-count" class="text-base font-black text-info">0</div> <!-- REGボーナス合計回数 -->
+                        </div> <!-- REG回数の枠を閉じる -->
+                    </div> <!-- ステータスバーを閉じる -->
+
+                    <!-- モード表示＆お助けおじさんアシスト枠 -->
+                    <div class="flex items-center justify-between gap-2 px-1"> <!-- モードバッジとコイン補充ボタンの枠 -->
+                        <span id="mode-badge" class="badge badge-outline text-warning border-warning/60 text-xs font-bold py-3">通常モード (BET: 3枚)</span> <!-- 現在のゲームモード表示 -->
+                        <button id="refill-btn" type="button" class="btn btn-xs btn-outline btn-warning">🪙 +100枚補充</button> <!-- コインを補充するボタン -->
+                    </div> <!-- モード表示枠を閉じる -->
+
+                    <!-- お助けおじさん登場パネル（普段は隠しておく） -->
+                    <div id="ojisan-box" class="hidden bg-amber-950/90 border-2 border-amber-400 rounded-xl p-2.5 flex items-center gap-2.5 animate-pulse"> <!-- お助けおじさん専用の演出枠 -->
+                        <span class="text-3xl shrink-0">👴</span> <!-- お助けおじさんのアイコン -->
+                        <div class="text-left"> <!-- セリフをまとめる枠 -->
+                            <div class="text-xs font-black text-amber-300">✨ お助けおじさん登場！</div> <!-- おじさん登場の見出し -->
+                            <p id="ojisan-msg" class="text-sm font-bold text-white">左 → 中 → 右 の順に押すんじゃ！</p> <!-- 押し順ナビのセリフ -->
+                        </div> <!-- セリフ枠を閉じる -->
+                    </div> <!-- お助けおじさん枠を閉じる -->
+
+                    <!-- 3リール×3段（上段・中段・下段）の表示エリア -->
+                    <div class="relative bg-base-100 p-2 sm:p-3 rounded-xl border-2 border-base-300"> <!-- リール窓の全体枠 -->
+                        <div class="grid grid-cols-3 gap-2 text-center"> <!-- 3つのリールを横並びにする枠 -->
+                            <!-- 左リール（上・中・下） -->
+                            <div class="flex flex-col gap-1 bg-base-200 rounded-lg p-1 border border-base-300"> <!-- 左リールの縦枠 -->
+                                <div id="reel-0-top" class="text-2xl opacity-45 py-0.5">🍇</div> <!-- 左リール上段 -->
+                                <div id="reel-0-mid" class="text-3xl sm:text-4xl py-1.5 bg-warning/25 rounded-md border-2 border-error font-bold">7️⃣</div> <!-- 左リール中段（有効ライン） -->
+                                <div id="reel-0-bot" class="text-2xl opacity-45 py-0.5">🦏</div> <!-- 左リール下段 -->
+                            </div> <!-- 左リールの縦枠を閉じる -->
+                            <!-- 中リール（上・中・下） -->
+                            <div class="flex flex-col gap-1 bg-base-200 rounded-lg p-1 border border-base-300"> <!-- 中リールの縦枠 -->
+                                <div id="reel-1-top" class="text-2xl opacity-45 py-0.5">🔔</div> <!-- 中リール上段 -->
+                                <div id="reel-1-mid" class="text-3xl sm:text-4xl py-1.5 bg-warning/25 rounded-md border-2 border-error font-bold">7️⃣</div> <!-- 中リール中段（有効ライン） -->
+                                <div id="reel-1-bot" class="text-2xl opacity-45 py-0.5">🍒</div> <!-- 中リール下段 -->
+                            </div> <!-- 中リールの縦枠を閉じる -->
+                            <!-- 右リール（上・中・下） -->
+                            <div class="flex flex-col gap-1 bg-base-200 rounded-lg p-1 border border-base-300"> <!-- 右リールの縦枠 -->
+                                <div id="reel-2-top" class="text-2xl opacity-45 py-0.5">🤡</div> <!-- 右リール上段 -->
+                                <div id="reel-2-mid" class="text-3xl sm:text-4xl py-1.5 bg-warning/25 rounded-md border-2 border-error font-bold">7️⃣</div> <!-- 右リール中段（有効ライン） -->
+                                <div id="reel-2-bot" class="text-2xl opacity-45 py-0.5">🅱️</div> <!-- 右リール下段 -->
+                            </div> <!-- 右リールの縦枠を閉じる -->
+                        </div> <!-- 3リール横並び枠を閉じる -->
+                    </div> <!-- リール窓の全体枠を閉じる -->
+
+                    <!-- 3つのストップボタン（おじさんナビ番号もここに表示） -->
+                    <div class="grid grid-cols-3 gap-2"> <!-- ストップボタンを横並びにする枠 -->
+                        <button id="stop-0" type="button" class="btn btn-error btn-md text-base font-bold" disabled>STOP</button> <!-- 左リール停止ボタン -->
+                        <button id="stop-1" type="button" class="btn btn-error btn-md text-base font-bold" disabled>STOP</button> <!-- 中リール停止ボタン -->
+                        <button id="stop-2" type="button" class="btn btn-error btn-md text-base font-bold" disabled>STOP</button> <!-- 右リール停止ボタン -->
+                    </div> <!-- ストップボタン枠を閉じる -->
+
+                    <!-- レバーON（回転開始）ボタン -->
+                    <button id="spin-btn" type="button" class="btn btn-warning btn-lg w-full text-lg font-extrabold">🎰 スロットを回す！</button> <!-- 回転開始ボタン -->
+
+                    <!-- 結果メッセージ表示エリア -->
+                    <div class="bg-black/40 rounded-xl px-3 py-2 text-center border border-white/10"> <!-- メッセージ用の枠 -->
+                        <p id="slot-msg" class="text-sm font-bold text-warning">ボタンを押してスタート！（1回 3枚）</p> <!-- スロットの結果メッセージ -->
+                    </div> <!-- メッセージ用の枠を閉じる -->
+
+                    <!-- 配当表（どの役が何枚かひと目でわかるミニ表） -->
+                    <div class="bg-black/30 rounded-xl p-2.5 text-xs text-white/80 grid grid-cols-2 gap-x-3 gap-y-1 border border-white/10"> <!-- 配当表の枠 -->
+                        <div>7️⃣7️⃣7️⃣ BIG (🍇10G連)</div> <!-- BIGボーナスの説明 -->
+                        <div>7️⃣7️⃣🅱️ REG (🍇5G連)</div> <!-- REGボーナスの説明 -->
+                        <div>🍇🍇🍇 ブドウ (+8 / 連+15)</div> <!-- ブドウの配当 -->
+                        <div>🦏🦏🦏 リプレイ (次G無料)</div> <!-- リプレイの配当 -->
+                        <div>🍒〇〇 チェリー (+2枚)</div> <!-- チェリーの配当 -->
+                        <div>🔔🔔🔔 ベル (+14枚)</div> <!-- ベルの配当 -->
+                        <div>🤡🤡🤡 ピエロ (+10枚)</div> <!-- ピエロの配当 -->
+                        <div>👴 おじさん (押し順成功で当)</div> <!-- お助けおじさんの説明 -->
+                    </div> <!-- 配当表の枠を閉じる -->
                 </div> <!-- スロット筐体風の枠を閉じる -->
 
             </div>
@@ -123,135 +195,469 @@
 
     <!-- ジャグラー風スロットの動きを制御するJavaScriptを開始する -->
     <script>
-        // スロットに登場する絵柄の一覧を配列で用意する
-        const symbols = ['7️⃣', '🤡', '🍇', '🍒', '🔔', '🦏'];
-        // 3つのリール表示要素を配列にまとめて取得する
-        const reels = [
-            document.getElementById('reel-0'), // 左リールの要素を取得する
-            document.getElementById('reel-1'), // 中リールの要素を取得する
-            document.getElementById('reel-2')  // 右リールの要素を取得する
-        ]; // リール配列の定義を終了する
-        // 3つのストップボタン要素を配列にまとめて取得する
+        // リール上に並んでいる絵柄の配列（上から下へ回るイメージ）を定義する
+        const reelStrip = ['7️⃣', '🍇', '🦏', '🍒', '🔔', '🤡', '🅱️', '🍇', '🦏'];
+        // 3つのリールそれぞれの上段・中段・下段の要素を配列にまとめる
+        const reelEls = [
+            { top: document.getElementById('reel-0-top'), mid: document.getElementById('reel-0-mid'), bot: document.getElementById('reel-0-bot') }, // 左リールの3段要素を取得する
+            { top: document.getElementById('reel-1-top'), mid: document.getElementById('reel-1-mid'), bot: document.getElementById('reel-1-bot') }, // 中リールの3段要素を取得する
+            { top: document.getElementById('reel-2-top'), mid: document.getElementById('reel-2-mid'), bot: document.getElementById('reel-2-bot') }  // 右リールの3段要素を取得する
+        ]; // リール要素配列の定義を終了する
+        // 3つのストップボタン要素を配列にまとめる
         const stopBtns = [
             document.getElementById('stop-0'), // 左ストップボタンを取得する
             document.getElementById('stop-1'), // 中ストップボタンを取得する
             document.getElementById('stop-2')  // 右ストップボタンを取得する
         ]; // ストップボタン配列の定義を終了する
-        // スロットを回すスタートボタンを取得する
+        // スロットを回すボタンを取得する
         const spinBtn = document.getElementById('spin-btn');
-        // GOGO!ランプの要素を取得する
+        // コイン補充ボタンを取得する
+        const refillBtn = document.getElementById('refill-btn');
+        // GOGO!ランプ要素を取得する
         const gogoLamp = document.getElementById('gogo-lamp');
-        // 結果メッセージの要素を取得する
+        // 結果メッセージ表示要素を取得する
         const slotMsg = document.getElementById('slot-msg');
-        // BIG回数を表示する要素を取得する
-        const bonusCountEl = document.getElementById('bonus-count');
+        // 所持コイン表示要素を取得する
+        const coinDisplay = document.getElementById('coin-display');
+        // 払出枚数表示要素を取得する
+        const payDisplay = document.getElementById('pay-display');
+        // BIG回数表示要素を取得する
+        const bigCountEl = document.getElementById('big-count');
+        // REG回数表示要素を取得する
+        const regCountEl = document.getElementById('reg-count');
+        // 現在のモード表示バッジ要素を取得する
+        const modeBadge = document.getElementById('mode-badge');
+        // お助けおじさん表示枠を取得する
+        const ojisanBox = document.getElementById('ojisan-box');
+        // お助けおじさんのセリフ表示要素を取得する
+        const ojisanMsg = document.getElementById('ojisan-msg');
+
+        // リールの名前（左・中・右）を配列で用意する
+        const reelNames = ['左', '中', '右'];
+        // 押し順ナビの丸数字ラベルを配列で用意する
+        const orderMarks = ['①', '②', '③'];
 
         // 各リールの回転タイマーを保存する配列を用意する
         let timers = [null, null, null];
         // 各リールが回転中かどうかを記録する配列を用意する
         let spinning = [false, false, false];
-        // 今回が大当たり（ペカり）かどうかのフラグを用意する
-        let isHit = false;
-        // BIGボーナスを引いた合計回数を記録する変数を用意する
-        let bonusCount = 0;
+        // 各リールの現在位置（配列の何番目か）を記録する配列を用意する
+        let stripPos = [0, 0, 0];
+        // 現在の所持コイン枚数を記録する変数（初期値100枚）
+        let coins = 100;
+        // BIGボーナス合計回数を記録する変数
+        let bigCount = 0;
+        // REGボーナス合計回数を記録する変数
+        let regCount = 0;
+        // ボーナス消化中の種類（null / 'BIG' / 'REG'）を記録する変数
+        let bonusMode = null;
+        // ボーナス消化中の残りゲーム数を記録する変数
+        let bonusRemain = 0;
+        // リプレイ成立により次ゲームが無料かどうかのフラグ
+        let isReplayFree = false;
+        // 今回ゲームで内部的に決まった当選役を記録する変数
+        let currentOutcome = 'MISS';
+        // 今回のゲームで停止させる予定の中段絵柄（左・中・右）を保存する配列
+        let targetSymbols = ['🍇', '🦏', '🔔'];
+        // お助けおじさんが登場中かどうかのフラグ
+        let ojisanActive = false;
+        // お助けおじさんが指定した押し順（例：[0, 2, 1]）を保存する配列
+        let ojisanOrder = [];
+        // プレイヤーが現在何番目のストップを押す段階かを記録する変数
+        let ojisanStep = 0;
+        // お助けおじさんの押し順を間違えたかどうかのフラグ
+        let ojisanFailed = false;
+
+        // 指定したリールの3段（上・中・下）を描画する関数を定義する
+        function renderReelByIndex(reelIndex, midPos) {
+            // 配列の長さを取得する
+            const len = reelStrip.length;
+            // 上段のインデックスを計算する（1つ前の絵柄）
+            const topPos = (midPos - 1 + len) % len;
+            // 下段のインデックスを計算する（1つ次の絵柄）
+            const botPos = (midPos + 1) % len;
+            // 上段に絵柄を反映する
+            reelEls[reelIndex].top.textContent = reelStrip[topPos];
+            // 中段（有効ライン）に絵柄を反映する
+            reelEls[reelIndex].mid.textContent = reelStrip[midPos];
+            // 下段に絵柄を反映する
+            reelEls[reelIndex].bot.textContent = reelStrip[botPos];
+        } // リール描画関数の定義を終了する
+
+        // 特定の絵柄を中段にピタッと止めて上下も自然に描画する関数を定義する
+        function setReelSymbol(reelIndex, symbol) {
+            // リール配列の中から指定絵柄の位置を探す
+            const idx = reelStrip.indexOf(symbol);
+            // 見つかった位置で3段を描画する（見つからない場合は0番目）
+            renderReelByIndex(reelIndex, idx >= 0 ? idx : 0);
+        } // 停止絵柄設定関数の定義を終了する
 
         // GOGO!ランプをペカッと光らせる関数を定義する
         function lightUpGogo() {
-            // ランプをピンク＆黄色に光らせて点滅アニメーションを付ける
+            // ランプをピンク＆黄色で発光・点滅させるクラスに変更する
             gogoLamp.className = 'px-3 py-1 rounded-lg bg-fuchsia-500 text-yellow-200 text-sm font-black tracking-wider shadow-lg shadow-fuchsia-500/80 animate-pulse border border-yellow-200';
-        } // 点灯関数の定義を終了する
+        } // GOGOランプ点灯関数を終了する
 
         // GOGO!ランプを消灯状態に戻す関数を定義する
         function turnOffGogo() {
-            // ランプを暗い元の見た目に戻す
-            gogoLamp.className = 'px-3 py-1 rounded-lg bg-black/50 text-white/20 text-sm font-black tracking-wider border border-white/10';
-        } // 消灯関数の定義を終了する
+            // ランプを暗い消灯状態のクラスに戻す
+            gogoLamp.className = 'px-3 py-1 rounded-lg bg-black/60 text-white/20 text-sm font-black tracking-wider border border-white/10';
+        } // GOGOランプ消灯関数を終了する
 
-        // スタートボタンが押されたときの処理を設定する
+        // 画面上部のコイン・回数・モード表示を最新状態に更新する関数を定義する
+        function updateStatusUI(payAmount) {
+            // 所持コイン枚数を画面に反映する
+            coinDisplay.textContent = coins;
+            // 今回の払出枚数を画面に反映する（指定がある場合のみ更新）
+            if (payAmount !== undefined) {
+                // 払出表示を書き換える
+                payDisplay.textContent = payAmount;
+            } // 払出更新のif文を終了する
+            // BIGボーナス回数を画面に反映する
+            bigCountEl.textContent = bigCount;
+            // REGボーナス回数を画面に反映する
+            regCountEl.textContent = regCount;
+            // ボーナス消化中かどうかでモードバッジの表示を切り替える
+            if (bonusMode === 'BIG') {
+                // BIGボーナス消化中の表示にする
+                modeBadge.textContent = '🔥 BIG消化中！🍇連チャン 残り' + bonusRemain + 'G (BET:1枚)';
+                // BIG用の目立つ赤色デザインにする
+                modeBadge.className = 'badge badge-error text-white text-xs font-bold py-3';
+            } else if (bonusMode === 'REG') {
+                // REGボーナス消化中の表示にする
+                modeBadge.textContent = '✨ REG消化中！🍇連チャン 残り' + bonusRemain + 'G (BET:1枚)';
+                // REG用の青色デザインにする
+                modeBadge.className = 'badge badge-info text-white text-xs font-bold py-3';
+            } else if (isReplayFree) {
+                // リプレイ成立直後の無料ゲーム表示にする
+                modeBadge.textContent = '🦏 REPLAY！次の1Gはコイン消費なし';
+                // リプレイ用の緑色デザインにする
+                modeBadge.className = 'badge badge-success text-white text-xs font-bold py-3';
+            } else {
+                // 通常モードの表示に戻す
+                modeBadge.textContent = '通常モード (BET: 3枚)';
+                // 通常モードの黄色枠デザインに戻す
+                modeBadge.className = 'badge badge-outline text-warning border-warning/60 text-xs font-bold py-3';
+            } // モードバッジ切り替えのif文を終了する
+        } // ステータス更新関数を終了する
+
+        // ストップボタンの文字を通常の「STOP」に戻す関数を定義する
+        function resetStopButtonLabels() {
+            // 3つのボタンすべてを順番に処理する
+            for (let i = 0; i < 3; i++) {
+                // ボタンの文字を「STOP」に戻す
+                stopBtns[i].textContent = 'STOP';
+            } // ループを終了する
+        } // ボタン文字リセット関数を終了する
+
+        // 絶対に役が揃わないハズレの3絵柄を生成する関数を定義する
+        function makeMissSymbols() {
+            // 左・中リールでチェリー以外から選ぶための候補配列を用意する
+            const pool = ['🍇', '🦏', '🔔', '🤡', '7️⃣', '🅱️'];
+            // 左リールの絵柄をランダムに選ぶ
+            const s0 = pool[Math.floor(Math.random() * pool.length)];
+            // 中リールの絵柄をランダムに選ぶ
+            const s1 = pool[Math.floor(Math.random() * pool.length)];
+            // 右リールは3つ揃いやREG（7-7-BAR）にならない絵柄だけを集める
+            const validRight = pool.filter(function (sym) {
+                // 左と中が同じならその絵柄を除外する
+                if (s0 === s1 && sym === s0) return false;
+                // 左と中が7️⃣ならREGになる🅱️を除外する
+                if (s0 === '7️⃣' && s1 === '7️⃣' && sym === '🅱️') return false;
+                // それ以外ならハズレ絵柄として採用する
+                return true;
+            }); // フィルタリングを終了する
+            // 右リールの絵柄を安全な候補からランダムに選ぶ
+            const s2 = validRight[Math.floor(Math.random() * validRight.length)];
+            // ハズレの3絵柄を配列で返す
+            return [s0, s1, s2];
+        } // ハズレ絵柄生成関数を終了する
+
+        // 当選役に応じた停止予定の3絵柄を決定する関数を定義する
+        function getSymbolsForOutcome(outcome) {
+            // BIGボーナスなら7️⃣を3つ並べる
+            if (outcome === 'BIG') return ['7️⃣', '7️⃣', '7️⃣'];
+            // REGボーナスなら7️⃣・7️⃣・🅱️を並べる
+            if (outcome === 'REG') return ['7️⃣', '7️⃣', '🅱️'];
+            // ブドウ（通常・ボーナス中共通）なら🍇を3つ並べる
+            if (outcome === 'GRAPE' || outcome === 'BONUS_GRAPE') return ['🍇', '🍇', '🍇'];
+            // リプレイなら🦏を3つ並べる
+            if (outcome === 'REPLAY') return ['🦏', '🦏', '🦏'];
+            // ベルなら🔔を3つ並べる
+            if (outcome === 'BELL') return ['🔔', '🔔', '🔔'];
+            // ピエロなら🤡を3つ並べる
+            if (outcome === 'PIERO') return ['🤡', '🤡', '🤡'];
+            // チェリーなら左リールに🍒を置き、中・右は別絵柄にする
+            if (outcome === 'CHERRY') return ['🍒', '🍇', '🦏'];
+            // ハズレの場合は安全なハズレ目を返す
+            return makeMissSymbols();
+        } // 停止絵柄決定関数を終了する
+
+        // コイン補充ボタンが押されたときの処理を設定する
+        refillBtn.addEventListener('click', function () {
+            // 所持コインを100枚増やす
+            coins += 100;
+            // 画面のコイン表示を更新する
+            updateStatusUI();
+            // 補充完了メッセージを表示する
+            slotMsg.textContent = '🪙 コインを100枚補充しました！';
+        }); // コイン補充ボタンのイベントを終了する
+
+        // スタートボタン（スロットを回す）が押されたときの処理を設定する
         spinBtn.addEventListener('click', function () {
-            // いずれかのリールがまだ回転中なら何もしない
+            // まだ回転中のリールがあれば何もしない
             if (spinning[0] || spinning[1] || spinning[2]) return;
+
+            // このゲームで必要なコイン枚数を計算する（ボーナス中1枚・リプレイ0枚・通常3枚）
+            const betCost = bonusMode !== null ? 1 : (isReplayFree ? 0 : 3);
+            // 所持コインが足りない場合は警告メッセージを出して中断する
+            if (coins < betCost) {
+                // コイン不足メッセージを表示する
+                slotMsg.textContent = '⚠️ コインが足りません！「+100枚補充」を押してね！';
+                // 処理をここで終了する
+                return;
+            } // コイン不足チェックを終了する
+
+            // 必要なコインを消費する
+            coins -= betCost;
+            // リプレイ無料フラグを使ったのでリセットする
+            isReplayFree = false;
             // スタートボタンを一時的に押せないようにする
             spinBtn.disabled = true;
-            // GOGO!ランプを一度消灯する
-            turnOffGogo();
-            // 35%の確率で大当たりフラグをONにする
-            isHit = Math.random() < 0.35;
-            // 大当たりのうち半分はスタート時にすぐ光る「先ペカ」にする
-            if (isHit && Math.random() < 0.5) {
-                // GOGO!ランプを点灯させる
-                lightUpGogo();
-                // 先ペカ専用メッセージを表示する
-                slotMsg.textContent = '✨ ペカッ！先光り！7を狙え！';
-            } else { // 先ペカしない場合の処理
-                // 通常の回転中メッセージを表示する
-                slotMsg.textContent = '回転中... STOPで止めよう！';
-            } // 先ペカ判定のif文を終了する
+            // お助けおじさん関連のフラグをリセットする
+            ojisanActive = false;
+            ojisanFailed = false;
+            ojisanStep = 0;
+            // お助けおじさんパネルを隠す
+            ojisanBox.classList.add('hidden');
+            // ストップボタンの文字を元に戻す
+            resetStopButtonLabels();
 
-            // 3つのリール（0番〜2番）を順番に回転開始する
+            // ボーナス消化中かどうかで抽選処理を分岐する
+            if (bonusMode !== null) {
+                // ボーナス消化中は必ずブドウが揃うように設定する
+                currentOutcome = 'BONUS_GRAPE';
+                // ボーナス中もGOGOランプは点灯したままにする
+                lightUpGogo();
+                // ボーナス消化中のメッセージを表示する
+                slotMsg.textContent = '🍇 ボーナス消化中！止めて15枚ゲット！';
+            } else {
+                // 通常時はGOGOランプを一旦消灯する
+                turnOffGogo();
+                // 14%の低確率でお助けおじさんが登場するかどうか抽選する
+                if (Math.random() < 0.14) {
+                    // お助けおじさんフラグをONにする
+                    ojisanActive = true;
+                    // 6パターンの押し順一覧を用意する
+                    const allOrders = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+                    // ランダムに1つの押し順を選ぶ
+                    ojisanOrder = allOrders[Math.floor(Math.random() * allOrders.length)];
+                    // おじさんアシストの恩恵（小役〜大当たり）を抽選する
+                    const r = Math.random();
+                    // 確率に応じて当選役を決める（BIG25% / REG20% / ベル15% / ピエロ15% / ブドウ15% / チェリー10%）
+                    if (r < 0.25) currentOutcome = 'BIG';
+                    else if (r < 0.45) currentOutcome = 'REG';
+                    else if (r < 0.60) currentOutcome = 'BELL';
+                    else if (r < 0.75) currentOutcome = 'PIERO';
+                    else if (r < 0.90) currentOutcome = 'GRAPE';
+                    else currentOutcome = 'CHERRY';
+
+                    // おじさんのセリフに押し順（例：左 → 右 → 中）を表示する
+                    ojisanMsg.textContent = 'わしに任せな！ ' + reelNames[ojisanOrder[0]] + ' → ' + reelNames[ojisanOrder[1]] + ' → ' + reelNames[ojisanOrder[2]] + ' の順に押すんじゃ！';
+                    // お助けおじさんパネルを表示する
+                    ojisanBox.classList.remove('hidden');
+                    // 各ストップボタンに押し順番号（①・②・③）を表示する
+                    for (let step = 0; step < 3; step++) {
+                        // 指定されたリール番号のボタンに丸数字を付ける
+                        stopBtns[ojisanOrder[step]].textContent = orderMarks[step] + ' STOP';
+                    } // ボタンナビ設定のループを終了する
+                    // おじさんアシスト中のメッセージを表示する
+                    slotMsg.textContent = '👴 おじさんの指示通りに押すと当たるぞ！';
+                } else {
+                    // 通常時の役抽選を行うための乱数を生成する
+                    const r = Math.random();
+                    // 確率に応じて通常時の役を決定する
+                    if (r < 0.06) currentOutcome = 'BIG';        // 6%でBIGボーナス
+                    else if (r < 0.11) currentOutcome = 'REG';   // 5%でREGボーナス
+                    else if (r < 0.29) currentOutcome = 'GRAPE'; // 18%でブドウ
+                    else if (r < 0.43) currentOutcome = 'REPLAY';// 14%でリプレイ
+                    else if (r < 0.51) currentOutcome = 'CHERRY';// 8%でチェリー
+                    else if (r < 0.54) currentOutcome = 'BELL';  // 3%でベル
+                    else if (r < 0.56) currentOutcome = 'PIERO'; // 2%でピエロ
+                    else currentOutcome = 'MISS';                // 残り44%はハズレ
+
+                    // BIGまたはREG当選時の半分はスタート時に光る「先ペカ」にする
+                    if ((currentOutcome === 'BIG' || currentOutcome === 'REG') && Math.random() < 0.5) {
+                        // GOGO!ランプを点灯させる
+                        lightUpGogo();
+                        // 先ペカ専用メッセージを表示する
+                        slotMsg.textContent = '✨ ペカッ！先光り！ボーナス確定！';
+                    } else {
+                        // 通常の回転中メッセージを表示する
+                        slotMsg.textContent = '回転中... 3つのSTOPで止めよう！';
+                    } // 先ペカ判定を終了する
+                } // お助けおじさん判定を終了する
+            } // ボーナス中／通常時の分岐を終了する
+
+            // 決まった当選役に対応する停止絵柄をセットする
+            targetSymbols = getSymbolsForOutcome(currentOutcome);
+            // コイン消費後のステータス画面を更新する（払出は一旦0に戻す）
+            updateStatusUI(0);
+
+            // 3つのリールすべてを回転開始する
             for (let i = 0; i < 3; i++) {
                 // i番目のリールを回転中状態にする
                 spinning[i] = true;
                 // i番目のストップボタンを押せるようにする
                 stopBtns[i].disabled = false;
-                // 80ミリ秒ごとに絵柄を切り替えるタイマーを開始する
+                // 70ミリ秒ごとにリールを1コマずつ進めるタイマーを開始する
                 timers[i] = setInterval(function () {
-                    // 配列からランダムな絵柄を1つ選ぶ
-                    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-                    // 選んだ絵柄をリールに表示する
-                    reels[i].textContent = randomSymbol;
-                }, 80); // 80ミリ秒間隔の繰り返し処理を終了する
-            } // 3リールのループ処理を終了する
-        }); // スタートボタンのクリックイベントを終了する
+                    // 配列の位置を1つ進める
+                    stripPos[i] = (stripPos[i] + 1) % reelStrip.length;
+                    // 新しい位置で3段を描画する
+                    renderReelByIndex(i, stripPos[i]);
+                }, 70); // 70ミリ秒間隔の繰り返しを終了する
+            } // 3リール回転開始ループを終了する
+        }); // スタートボタンのイベントを終了する
 
-        // 3つのストップボタンそれぞれにクリック処理を設定する
+        // 3つのストップボタンそれぞれに停止処理を設定する
         for (let i = 0; i < 3; i++) {
             // i番目のストップボタンが押されたときの処理を設定する
             stopBtns[i].addEventListener('click', function () {
-                // i番目のリールが回転していなければ何もしない
+                // このリールがすでに止まっていれば何もしない
                 if (!spinning[i]) return;
-                // i番目のリールの回転タイマーを止める
+                // 回転タイマーを停止する
                 clearInterval(timers[i]);
-                // i番目のリールを停止状態にする
+                // 回転中フラグをOFFにする
                 spinning[i] = false;
-                // i番目のストップボタンを押せないようにする
+                // このストップボタンを無効にする
                 stopBtns[i].disabled = true;
 
-                // 大当たりフラグがONなら強制的に7を止める
-                if (isHit) {
-                    // リールの絵柄を7️⃣に固定する
-                    reels[i].textContent = '7️⃣';
-                } else { // ハズレフラグの場合の処理
-                    // 7️⃣以外の絵柄からランダムに1つ選んで止める
-                    const missSymbols = ['🤡', '🍇', '🍒', '🔔', '🦏'];
-                    // ハズレ用の絵柄をリールに表示する
-                    reels[i].textContent = missSymbols[Math.floor(Math.random() * missSymbols.length)];
-                } // 停止絵柄の条件分岐を終了する
+                // お助けおじさんが登場中なら押し順が合っているかチェックする
+                if (ojisanActive && !ojisanFailed) {
+                    // 押されたリール番号が指定の順番と一致するか確認する
+                    if (ojisanOrder[ojisanStep] === i) {
+                        // 正解なら次のステップへ進める
+                        ojisanStep++;
+                    } else {
+                        // 順番を間違えた場合はアシスト失敗フラグをONにする
+                        ojisanFailed = true;
+                        // 当選役をハズレに書き換える
+                        currentOutcome = 'MISS';
+                        // 残りの絵柄をハズレ用に変更する
+                        targetSymbols = makeMissSymbols();
+                        // おじさんのセリフをガッカリメッセージに変える
+                        ojisanMsg.textContent = 'おっと、順番が違うぞい！次は気をつけるんじゃ！';
+                    } // 押し順一致チェックを終了する
+                } // おじさん判定を終了する
 
-                // 3つすべてのリールが止まったかどうかを確認する
+                // もし押し順失敗後にすでに止めた絵柄と揃いそうなら別の絵柄にずらす
+                if (ojisanFailed) {
+                    // まだ止めていない最後のリールなどで誤って揃わないよう安全に絵柄を止める
+                    const fallback = ['🍇', '🦏', '🔔', '🤡'];
+                    // 左・中の絵柄と被らない絵柄を選ぶ
+                    const safeSym = fallback.find(function (s) {
+                        return s !== reelEls[0].mid.textContent && s !== reelEls[1].mid.textContent;
+                    }) || '🦏';
+                    // 安全なハズレ絵柄を中段に止める
+                    setReelSymbol(i, safeSym);
+                } else {
+                    // 予定していた当選役の絵柄を中段にピタッと止める
+                    setReelSymbol(i, targetSymbols[i]);
+                } // 停止絵柄分岐を終了する
+
+                // 3つすべてのリールが停止したかどうかを確認する
                 if (!spinning[0] && !spinning[1] && !spinning[2]) {
                     // スタートボタンを再び押せるようにする
                     spinBtn.disabled = false;
-                    // 大当たりフラグがONだった場合の結果表示
-                    if (isHit) {
-                        // 後ペカの場合も含めてGOGO!ランプを確実に点灯させる
+                    // 今回の払出枚数を記録する変数を用意する
+                    let payout = 0;
+
+                    // おじさんアシストに失敗していた場合の処理
+                    if (ojisanFailed) {
+                        // 失敗メッセージを表示する
+                        slotMsg.textContent = '😢 押し順ミス！アシスト失敗でハズレ…';
+                    } else if (currentOutcome === 'BONUS_GRAPE') {
+                        // ボーナス消化中のブドウ揃い（+15枚）
+                        payout = 15;
+                        // コインを加算する
+                        coins += payout;
+                        // ボーナス残りゲーム数を1減らす
+                        bonusRemain--;
+                        // ボーナスが終了したかどうか判定する
+                        if (bonusRemain <= 0) {
+                            // 終了したボーナス名を一時保存する
+                            const finishedName = bonusMode;
+                            // ボーナスモードを通常に戻す
+                            bonusMode = null;
+                            // GOGO!ランプを消灯する
+                            turnOffGogo();
+                            // ボーナス完走メッセージを表示する
+                            slotMsg.textContent = '🎊 🍇+15枚！' + finishedName + ' BONUS終了！お見事！';
+                        } else {
+                            // ボーナス継続中のメッセージを表示する
+                            slotMsg.textContent = '🍇 ブドウ揃い！+15枚！（残り' + bonusRemain + 'G）';
+                        } // ボーナス終了判定を終了する
+                    } else if (currentOutcome === 'BIG') {
+                        // BIGボーナス成立！GOGOランプを確実に点灯させる
                         lightUpGogo();
                         // BIGボーナス回数を1増やす
-                        bonusCount++;
-                        // BIG回数の表示を更新する
-                        bonusCountEl.textContent = 'BIG: ' + bonusCount + '回';
-                        // 大当たりのお祝いメッセージを表示する
-                        slotMsg.textContent = '🎉 ペカッ！BIG BONUS！777揃い！';
-                    } else if (reels[0].textContent === reels[1].textContent && reels[1].textContent === reels[2].textContent) {
-                        // 7以外の同じ絵柄が3つ揃った場合のメッセージを表示する
-                        slotMsg.textContent = '✨ ' + reels[0].textContent + ' 揃い！小役ゲット！';
-                    } else { // 何も揃わなかった場合の処理
-                        // 次の挑戦を促すメッセージを表示する
+                        bigCount++;
+                        // 次ゲームからBIG消化モード（ブドウ10G連チャン）へ移行する
+                        bonusMode = 'BIG';
+                        bonusRemain = 10;
+                        // BIG当選のお祝いメッセージを表示する
+                        slotMsg.textContent = '🎉 ペカッ！BIG BONUS！次から🍇10G連チャン！';
+                    } else if (currentOutcome === 'REG') {
+                        // REGボーナス成立！GOGOランプを確実に点灯させる
+                        lightUpGogo();
+                        // REGボーナス回数を1増やす
+                        regCount++;
+                        // 次ゲームからREG消化モード（ブドウ5G連チャン）へ移行する
+                        bonusMode = 'REG';
+                        bonusRemain = 5;
+                        // REG当選のお祝いメッセージを表示する
+                        slotMsg.textContent = '✨ ペカッ！REG BONUS！次から🍇5G連チャン！';
+                    } else if (currentOutcome === 'GRAPE') {
+                        // 通常時のブドウ揃い（+8枚）
+                        payout = 8;
+                        coins += payout;
+                        slotMsg.textContent = '🍇 ブドウ揃い！+8枚ゲット！';
+                    } else if (currentOutcome === 'REPLAY') {
+                        // リプレイ揃い（次ゲーム無料）
+                        isReplayFree = true;
+                        slotMsg.textContent = '🦏 リプレイ！次の1ゲームは無料で回せるよ！';
+                    } else if (currentOutcome === 'CHERRY') {
+                        // チェリー成立（+2枚）
+                        payout = 2;
+                        coins += payout;
+                        slotMsg.textContent = '🍒 チェリー出現！+2枚ゲット！';
+                    } else if (currentOutcome === 'BELL') {
+                        // レア役ベル揃い（+14枚）
+                        payout = 14;
+                        coins += payout;
+                        slotMsg.textContent = '🔔 レア役ベル揃い！+14枚ゲット！';
+                    } else if (currentOutcome === 'PIERO') {
+                        // レア役ピエロ揃い（+10枚）
+                        payout = 10;
+                        coins += payout;
+                        slotMsg.textContent = '🤡 レア役ピエロ揃い！+10枚ゲット！';
+                    } else {
+                        // ハズレ時のメッセージを表示する
                         slotMsg.textContent = 'ハズレ… もう一回回そう！';
-                    } // 結果判定のif文を終了する
-                } // 全リール停止チェックのif文を終了する
+                    } // 結果判定の条件分岐を終了する
+
+                    // おじさんアシストに成功していたらセリフを祝福に変える
+                    if (ojisanActive && !ojisanFailed) {
+                        // おじさんの成功セリフを表示する
+                        ojisanMsg.textContent = '見事じゃ！バッチリ当たったのう！';
+                    } // おじさん成功メッセージのif文を終了する
+
+                    // 最終的なコイン・払出・モード表示を画面に反映する
+                    updateStatusUI(payout);
+                } // 全リール停止チェックを終了する
             }); // ストップボタンのクリックイベントを終了する
-        } // ストップボタン設定のループを終了する
+        } // ストップボタン設定ループを終了する
     </script> <!-- JavaScriptの記述を終了する -->
 </body>
 </html>

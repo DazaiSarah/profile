@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="emerald">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自己紹介 - なかちゃん</title>
+    <!-- Tailwind CSS v4 & daisyUI v5 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+</head>
+<body class="bg-base-200 min-h-screen flex flex-col justify-between items-center">
+
+    <!-- 上部 ナビバー (Navbar)：スマホでは左右余白を狭くする -->
+    <header class="w-full navbar bg-primary text-primary-content px-3 sm:px-6 shadow-md">
+        <div class="flex-1">
+            <span class="text-xl font-bold tracking-wide">✨ Profile Page</span>
+        </div>
+        <div class="flex-none">
+            <span class="badge badge-outline text-primary-content text-sm py-3">授業練習用</span>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ：スマホでは左右の余白（px-2）を小さくして画面幅を広く使う -->
+    <main class="w-full max-w-lg px-2 py-3 sm:p-4 sm:my-6 flex-grow">
+        <div class="card bg-base-100 shadow-2xl border border-base-300 overflow-hidden">
+            <!-- カード内側の余白もスマホ向けに少し詰める -->
+            <div class="card-body p-4 sm:p-6 gap-5 sm:gap-6">
+
+                <!-- ヒーロー (Hero) -->
+                <div class="hero bg-base-200 rounded-2xl p-5 sm:p-6 border border-base-300">
+                    <div class="hero-content text-center flex-col p-0">
+                        <div class="avatar placeholder">
+                            <div class="bg-primary text-primary-content rounded-full w-20 ring ring-primary ring-offset-base-100 ring-offset-2">
+                                <span class="text-4xl">🎭</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="text-4xl font-extrabold text-primary">なかちゃん</h1>
+                            <p class="text-sm text-base-content/70 mt-1">My Self Introduction</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1. ひとこと -->
+                <div class="chat chat-start">
+                    <div class="chat-header text-sm font-bold text-base-content/70 mb-1">💬 ひとこと</div>
+                    <div class="chat-bubble chat-bubble-primary text-xl font-bold">
+                        よろしくです！
+                    </div>
+                </div>
+
+                <div class="divider my-0"></div>
+
+                <!-- 2. 好きなもの（演劇、ラーメン、ねこ） -->
+                <div>
+                    <h2 class="text-base font-bold text-base-content/80 mb-3 flex items-center gap-1">
+                        <span>❤️</span> 好きなもの
+                    </h2>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="btn btn-primary btn-md text-base rounded-full">🎭 演劇</button>
+                        <button class="btn btn-secondary btn-md text-base rounded-full">🍜 ラーメン</button>
+                        <button class="btn btn-accent btn-md text-base rounded-full">🐱 ねこ</button>
+                    </div>
+                </div>
+
+                <div class="divider my-0"></div>
+
+                <!-- 3. 最近学んでいること -->
+                <div class="stats shadow bg-base-200 border border-base-300">
+                    <div class="stat px-4 py-4">
+                        <div class="stat-title text-sm font-bold text-base-content/80">📖 最近学んでいること</div>
+                        <div class="stat-value text-3xl text-secondary mt-1">身体表現</div>
+                    </div>
+                </div>
+
+                <div class="divider my-0"></div>
+
+                <!-- 4. この授業で作ったもの -->
+                <div class="bg-base-200 p-4 rounded-xl border border-base-300">
+                    <h2 class="text-sm font-bold text-base-content/80 mb-2">🚀 この授業で作ったもの</h2>
+                    <div class="card bg-base-100 border border-base-300 shadow-sm">
+                        <div class="card-body p-4 gap-2">
+                            <h3 class="card-title text-lg font-bold text-primary">Vibe Codingで作成したWebサイト</h3>
+                            <p class="text-sm text-base-content/80 leading-relaxed">AIとの対話を通して素早く組み上げた、自己紹介ポートフォリオページです。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. ジャグラー風ミニスロット -->
+                <div class="divider my-0"></div> <!-- 区切り線を表示する -->
+                <div class="bg-neutral text-neutral-content p-3 sm:p-4 rounded-2xl border-2 border-warning shadow-lg flex flex-col gap-3"> <!-- スロット筐体風の枠 -->
+                    <div class="flex items-center justify-between gap-2"> <!-- 上部のタイトルとランプを横並びにする枠 -->
+                        <h2 class="text-base font-extrabold text-warning">🤡 なかちゃんジャグラー</h2> <!-- スロットの見出し -->
+                        <div id="gogo-lamp" class="px-3 py-1 rounded-lg bg-black/50 text-white/20 text-sm font-black tracking-wider border border-white/10">GOGO! CHANCE</div> <!-- 当たるとペカッと光るGOGOランプ -->
+                    </div> <!-- 上部の横並び枠を閉じる -->
+                    <div class="grid grid-cols-3 gap-2 bg-base-100 p-2 sm:p-3 rounded-xl text-center"> <!-- 3つのリールを横並びにする枠 -->
+                        <div id="reel-0" class="text-5xl py-3 bg-base-200 rounded-lg border border-base-300">7️⃣</div> <!-- 左リールの表示エリア -->
+                        <div id="reel-1" class="text-5xl py-3 bg-base-200 rounded-lg border border-base-300">7️⃣</div> <!-- 中リールの表示エリア -->
+                        <div id="reel-2" class="text-5xl py-3 bg-base-200 rounded-lg border border-base-300">7️⃣</div> <!-- 右リールの表示エリア -->
+                    </div> <!-- 3つのリールの枠を閉じる -->
+                    <div class="grid grid-cols-3 gap-2"> <!-- 3つのストップボタンを横並びにする枠 -->
+                        <button id="stop-0" type="button" class="btn btn-error btn-md text-base font-bold" disabled>STOP</button> <!-- 左リールを止めるボタン -->
+                        <button id="stop-1" type="button" class="btn btn-error btn-md text-base font-bold" disabled>STOP</button> <!-- 中リールを止めるボタン -->
+                        <button id="stop-2" type="button" class="btn btn-error btn-md text-base font-bold" disabled>STOP</button> <!-- 右リールを止めるボタン -->
+                    </div> <!-- ストップボタンの枠を閉じる -->
+                    <button id="spin-btn" type="button" class="btn btn-warning btn-lg w-full text-lg font-extrabold">🎰 スロットを回す！</button> <!-- レバーON（回転開始）ボタン -->
+                    <div class="flex items-center justify-between gap-2 text-sm px-1"> <!-- メッセージとBIG回数を横並びにする枠 -->
+                        <p id="slot-msg" class="font-bold text-warning">ボタンを押してスタート！</p> <!-- スロットの結果メッセージ -->
+                        <span id="bonus-count" class="badge badge-secondary badge-lg font-bold shrink-0">BIG: 0回</span> <!-- 大当たり回数の表示 -->
+                    </div> <!-- メッセージとBIG回数の枠を閉じる -->
+                </div> <!-- スロット筐体風の枠を閉じる -->
+
+            </div>
+        </div>
+    </main>
+
+    <!-- 下部 フッター (Footer) -->
+    <footer class="w-full footer footer-center p-4 bg-neutral text-neutral-content text-sm">
+        <aside>
+            <p>© なかちゃん 2026</p>
+        </aside>
+    </footer>
+
+    <!-- ジャグラー風スロットの動きを制御するJavaScriptを開始する -->
+    <script>
+        // スロットに登場する絵柄の一覧を配列で用意する
+        const symbols = ['7️⃣', '🤡', '🍇', '🍒', '🔔', '🦏'];
+        // 3つのリール表示要素を配列にまとめて取得する
+        const reels = [
+            document.getElementById('reel-0'), // 左リールの要素を取得する
+            document.getElementById('reel-1'), // 中リールの要素を取得する
+            document.getElementById('reel-2')  // 右リールの要素を取得する
+        ]; // リール配列の定義を終了する
+        // 3つのストップボタン要素を配列にまとめて取得する
+        const stopBtns = [
+            document.getElementById('stop-0'), // 左ストップボタンを取得する
+            document.getElementById('stop-1'), // 中ストップボタンを取得する
+            document.getElementById('stop-2')  // 右ストップボタンを取得する
+        ]; // ストップボタン配列の定義を終了する
+        // スロットを回すスタートボタンを取得する
+        const spinBtn = document.getElementById('spin-btn');
+        // GOGO!ランプの要素を取得する
+        const gogoLamp = document.getElementById('gogo-lamp');
+        // 結果メッセージの要素を取得する
+        const slotMsg = document.getElementById('slot-msg');
+        // BIG回数を表示する要素を取得する
+        const bonusCountEl = document.getElementById('bonus-count');
+
+        // 各リールの回転タイマーを保存する配列を用意する
+        let timers = [null, null, null];
+        // 各リールが回転中かどうかを記録する配列を用意する
+        let spinning = [false, false, false];
+        // 今回が大当たり（ペカり）かどうかのフラグを用意する
+        let isHit = false;
+        // BIGボーナスを引いた合計回数を記録する変数を用意する
+        let bonusCount = 0;
+
+        // GOGO!ランプをペカッと光らせる関数を定義する
+        function lightUpGogo() {
+            // ランプをピンク＆黄色に光らせて点滅アニメーションを付ける
+            gogoLamp.className = 'px-3 py-1 rounded-lg bg-fuchsia-500 text-yellow-200 text-sm font-black tracking-wider shadow-lg shadow-fuchsia-500/80 animate-pulse border border-yellow-200';
+        } // 点灯関数の定義を終了する
+
+        // GOGO!ランプを消灯状態に戻す関数を定義する
+        function turnOffGogo() {
+            // ランプを暗い元の見た目に戻す
+            gogoLamp.className = 'px-3 py-1 rounded-lg bg-black/50 text-white/20 text-sm font-black tracking-wider border border-white/10';
+        } // 消灯関数の定義を終了する
+
+        // スタートボタンが押されたときの処理を設定する
+        spinBtn.addEventListener('click', function () {
+            // いずれかのリールがまだ回転中なら何もしない
+            if (spinning[0] || spinning[1] || spinning[2]) return;
+            // スタートボタンを一時的に押せないようにする
+            spinBtn.disabled = true;
+            // GOGO!ランプを一度消灯する
+            turnOffGogo();
+            // 35%の確率で大当たりフラグをONにする
+            isHit = Math.random() < 0.35;
+            // 大当たりのうち半分はスタート時にすぐ光る「先ペカ」にする
+            if (isHit && Math.random() < 0.5) {
+                // GOGO!ランプを点灯させる
+                lightUpGogo();
+                // 先ペカ専用メッセージを表示する
+                slotMsg.textContent = '✨ ペカッ！先光り！7を狙え！';
+            } else { // 先ペカしない場合の処理
+                // 通常の回転中メッセージを表示する
+                slotMsg.textContent = '回転中... STOPで止めよう！';
+            } // 先ペカ判定のif文を終了する
+
+            // 3つのリール（0番〜2番）を順番に回転開始する
+            for (let i = 0; i < 3; i++) {
+                // i番目のリールを回転中状態にする
+                spinning[i] = true;
+                // i番目のストップボタンを押せるようにする
+                stopBtns[i].disabled = false;
+                // 80ミリ秒ごとに絵柄を切り替えるタイマーを開始する
+                timers[i] = setInterval(function () {
+                    // 配列からランダムな絵柄を1つ選ぶ
+                    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+                    // 選んだ絵柄をリールに表示する
+                    reels[i].textContent = randomSymbol;
+                }, 80); // 80ミリ秒間隔の繰り返し処理を終了する
+            } // 3リールのループ処理を終了する
+        }); // スタートボタンのクリックイベントを終了する
+
+        // 3つのストップボタンそれぞれにクリック処理を設定する
+        for (let i = 0; i < 3; i++) {
+            // i番目のストップボタンが押されたときの処理を設定する
+            stopBtns[i].addEventListener('click', function () {
+                // i番目のリールが回転していなければ何もしない
+                if (!spinning[i]) return;
+                // i番目のリールの回転タイマーを止める
+                clearInterval(timers[i]);
+                // i番目のリールを停止状態にする
+                spinning[i] = false;
+                // i番目のストップボタンを押せないようにする
+                stopBtns[i].disabled = true;
+
+                // 大当たりフラグがONなら強制的に7を止める
+                if (isHit) {
+                    // リールの絵柄を7️⃣に固定する
+                    reels[i].textContent = '7️⃣';
+                } else { // ハズレフラグの場合の処理
+                    // 7️⃣以外の絵柄からランダムに1つ選んで止める
+                    const missSymbols = ['🤡', '🍇', '🍒', '🔔', '🦏'];
+                    // ハズレ用の絵柄をリールに表示する
+                    reels[i].textContent = missSymbols[Math.floor(Math.random() * missSymbols.length)];
+                } // 停止絵柄の条件分岐を終了する
+
+                // 3つすべてのリールが止まったかどうかを確認する
+                if (!spinning[0] && !spinning[1] && !spinning[2]) {
+                    // スタートボタンを再び押せるようにする
+                    spinBtn.disabled = false;
+                    // 大当たりフラグがONだった場合の結果表示
+                    if (isHit) {
+                        // 後ペカの場合も含めてGOGO!ランプを確実に点灯させる
+                        lightUpGogo();
+                        // BIGボーナス回数を1増やす
+                        bonusCount++;
+                        // BIG回数の表示を更新する
+                        bonusCountEl.textContent = 'BIG: ' + bonusCount + '回';
+                        // 大当たりのお祝いメッセージを表示する
+                        slotMsg.textContent = '🎉 ペカッ！BIG BONUS！777揃い！';
+                    } else if (reels[0].textContent === reels[1].textContent && reels[1].textContent === reels[2].textContent) {
+                        // 7以外の同じ絵柄が3つ揃った場合のメッセージを表示する
+                        slotMsg.textContent = '✨ ' + reels[0].textContent + ' 揃い！小役ゲット！';
+                    } else { // 何も揃わなかった場合の処理
+                        // 次の挑戦を促すメッセージを表示する
+                        slotMsg.textContent = 'ハズレ… もう一回回そう！';
+                    } // 結果判定のif文を終了する
+                } // 全リール停止チェックのif文を終了する
+            }); // ストップボタンのクリックイベントを終了する
+        } // ストップボタン設定のループを終了する
+    </script> <!-- JavaScriptの記述を終了する -->
+</body>
+</html>
